@@ -1,0 +1,64 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DeepGuard AI - Deepfake Detection</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>DeepGuard AI</h2>
+      <nav>
+        <a href="{{ url_for('index') }}" class="active">🏠 Home</a>
+        <a href="{{ url_for('history') }}">🕓 Detection History</a>
+        <a href="{{ url_for('about') }}">ℹ️ About</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <header>
+        <h1>Welcome to DeepGuard AI</h1>
+        <p>Upload an image to detect deepfakes using our trained model</p>
+      </header>
+
+      <section class="upload-box">
+        <h3>Upload Image for Deepfake Detection</h3>
+        <form action="{{ url_for('index') }}" method="POST" enctype="multipart/form-data">
+          <div class="drop-area">
+            <input type="file" name="file" id="file" accept="image/*" required onchange="previewImage(event)">
+            <label for="file">📂 Drop your image here or click to upload</label>
+          </div>
+          <div id="preview-container">
+            {% if filename %}
+              <img src="{{ url_for('static', filename='uploads/' + filename) }}" class="preview-image">
+            {% else %}
+              <img id="preview" class="preview-image" style="display:none;">
+            {% endif %}
+          </div>
+          <button type="submit" class="btn">Detect</button>
+        </form>
+      </section>
+
+      {% if prediction %}
+      <section class="result">
+        <h3>Prediction Result:</h3>
+        <p class="result-text">{{ prediction }} (Confidence: {{ '%.2f' % (score * 100) }}%)</p>
+      </section>
+      {% endif %}
+    </main>
+  </div>
+
+  <script>
+    function previewImage(event) {
+      const preview = document.getElementById('preview');
+      preview.src = URL.createObjectURL(event.target.files[0]);
+      preview.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detection History - DeepGuard AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>DeepGuard AI</h2>
+      <nav>
+        <a href="{{ url_for('index') }}">🏠 Home</a>
+        <a href="{{ url_for('history') }}" class="active">🕓 Detection History</a>
+        <a href="{{ url_for('about') }}">ℹ️ About</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <header>
+        <h1>Detection History</h1>
+        <p>All images you have uploaded for deepfake detection</p>
+      </header>
+
+      <section class="history-gallery">
+        {% if images %}
+          <div class="gallery">
+            {% for img in images %}
+              <div class="gallery-item">
+                <img src="{{ url_for('static', filename='uploads/' + img) }}" alt="{{ img }}">
+                <p>{{ img }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p>No uploaded images yet.</p>
+        {% endif %}
+      </section>
+    </main>
+  </div>
+</body>
+</html>
+

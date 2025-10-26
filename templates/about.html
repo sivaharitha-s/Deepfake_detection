@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - DeepGuard AI</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>DeepGuard AI</h2>
+      <nav>
+        <a href="/">🏠 Home</a>
+        <a href="{{ url_for('history') }}">🕓 Detection History</a>
+        <a href="{{ url_for('about') }}" class="active">ℹ️ About</a>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <header>
+        <h1>About DeepGuard AI</h1>
+        <p>Know more about our mission and the technology behind it</p>
+      </header>
+
+      <section class="about-section">
+        <h2>🔍 Our Mission</h2>
+        <p>
+          DeepGuard AI is dedicated to identifying and preventing the spread of deepfake content. 
+          Our goal is to build trust in digital media by providing accurate and fast deepfake detection 
+          using advanced deep learning models.
+        </p>
+
+        <h2>🧠 What Are Deepfakes?</h2>
+        <p>
+          Deepfakes are synthetic media where a person’s likeness is digitally manipulated using AI, 
+          often to make them appear to say or do things they never did. 
+          While this technology can be used creatively, it also poses serious risks such as misinformation, 
+          fraud, and privacy invasion.
+        </p>
+
+        <h2>⚙️ Our Technology</h2>
+        <p>
+          DeepGuard AI leverages state-of-the-art neural networks trained on thousands of real and fake faces. 
+          The system analyzes subtle visual cues like inconsistencies in lighting, texture, and facial alignment 
+          to accurately distinguish between authentic and manipulated images.
+        </p>
+
+        <h2>💡 Our Services</h2>
+        <ul>
+          <li>Deepfake image detection using CNN-based models</li>
+          <li>Automatic detection history tracking</li>
+          <li>Secure and privacy-focused image analysis</li>
+          <li>API support for developers and organizations</li>
+        </ul>
+
+        <p class="footer-note">
+          Together, we can make the digital world safer and more trustworthy.
+        </p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
